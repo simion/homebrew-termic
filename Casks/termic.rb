@@ -2,7 +2,7 @@ cask "termic" do
   version "0.1.1"
   sha256 ""
 
-  url "https://github.com/simion/termic/releases/download/v#{version}/Termic_#{version}_aarch64.dmg"
+  url "https://github.com/simion/termic/releases/download/v#{version}/termic_#{version}_aarch64.dmg"
   name "Termic"
   desc "Free, open-source desktop app for running claude / gemini / codex in parallel git worktrees"
   homepage "https://termic.dev"
