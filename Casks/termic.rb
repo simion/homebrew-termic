@@ -1,6 +1,6 @@
 cask "termic" do
-  version "0.0.0"
-  sha256 :no_check  # bootstrap placeholder; replaced by CI on first real release
+  version "0.1.1"
+  sha256 ""
 
   url "https://github.com/simion/termic/releases/download/v#{version}/Termic_#{version}_aarch64.dmg"
   name "Termic"
