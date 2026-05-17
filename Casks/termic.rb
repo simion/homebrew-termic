@@ -1,6 +1,6 @@
 cask "termic" do
   version "0.1.1"
-  sha256 ""
+  sha256 "5306e19234f5a9483b94f78c48b6ce77dca3b551aa94ddf1b33de64a18b6360b"
 
   url "https://github.com/simion/termic/releases/download/v#{version}/termic_#{version}_aarch64.dmg"
   name "Termic"
