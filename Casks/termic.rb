@@ -17,11 +17,6 @@ cask "termic" do
 
   app "termic.app"
 
-  # tinyproxy is required for per-workspace network allowlisting on
-  # sandboxed workspaces. Without it sandboxed agents fall back to
-  # full network deny.
-  depends_on formula: "tinyproxy"
-
   # Disabling quarantine lets Termic open on first launch without the
   # "unidentified developer" Gatekeeper prompt. Acceptable because:
   #   1) This is our own tap (not homebrew/cask), so we set the policy.
