@@ -1,8 +1,19 @@
 cask "termic" do
   version "0.1.1"
-  sha256 "5306e19234f5a9483b94f78c48b6ce77dca3b551aa94ddf1b33de64a18b6360b"
 
-  url "https://github.com/simion/termic/releases/download/v#{version}/termic_#{version}_aarch64.dmg"
+  # Per-arch payload. Brew picks the right block at install time. The
+  # `# @sha-arm` / `# @sha-intel` trailing anchors are load-bearing:
+  # the release workflow's bump-tap job sed-targets those lines to
+  # update the sha256 independently per arch. Don't remove the comments.
+  on_arm do
+    sha256 "0000000000000000000000000000000000000000000000000000000000000000" # @sha-arm
+    url "https://github.com/simion/termic/releases/download/v#{version}/termic_#{version}_aarch64.dmg"
+  end
+  on_intel do
+    sha256 "0000000000000000000000000000000000000000000000000000000000000000" # @sha-intel
+    url "https://github.com/simion/termic/releases/download/v#{version}/termic_#{version}_x64.dmg"
+  end
+
   name "Termic"
   desc "Free, open-source desktop app for running claude / gemini / codex in parallel git worktrees"
   homepage "https://termic.dev"
