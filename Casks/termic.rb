@@ -1,18 +1,15 @@
 cask "termic" do
   version "0.1.1"
 
-  # Per-arch payload. Brew picks the right block at install time. The
-  # `# @sha-arm` / `# @sha-intel` trailing anchors are load-bearing:
-  # the release workflow's bump-tap job sed-targets those lines to
-  # update the sha256 independently per arch. Don't remove the comments.
-  on_arm do
-    sha256 "0000000000000000000000000000000000000000000000000000000000000000" # @sha-arm
-    url "https://github.com/simion/termic/releases/download/v#{version}/termic_#{version}_aarch64.dmg"
-  end
-  on_intel do
-    sha256 "0000000000000000000000000000000000000000000000000000000000000000" # @sha-intel
-    url "https://github.com/simion/termic/releases/download/v#{version}/termic_#{version}_x64.dmg"
-  end
+  # Apple Silicon only for now. Intel builds are paused in CI while
+  # GitHub's macos-13 runner queue is unreliable; will return in a
+  # follow-up release with on_arm / on_intel split. The `# @sha-arm`
+  # trailing anchor is load-bearing: release workflow's bump-tap job
+  # sed-targets this line to update the sha256. Don't remove the
+  # comment.
+  sha256 "0000000000000000000000000000000000000000000000000000000000000000" # @sha-arm
+  url "https://github.com/simion/termic/releases/download/v#{version}/termic_#{version}_aarch64.dmg"
+  depends_on arch: :arm64
 
   name "Termic"
   desc "Free, open-source desktop app for running claude / gemini / codex in parallel git worktrees"
