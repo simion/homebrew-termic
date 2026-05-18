@@ -1,5 +1,5 @@
 cask "termic" do
-  version "0.1.1"
+  version "0.2.1"
 
   # Apple Silicon only for now. Intel builds are paused in CI while
   # GitHub's macos-13 runner queue is unreliable; will return in a
@@ -7,7 +7,7 @@ cask "termic" do
   # trailing anchor is load-bearing: release workflow's bump-tap job
   # sed-targets this line to update the sha256. Don't remove the
   # comment.
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000" # @sha-arm
+  sha256 "ccca67578eb5c2fc9f204c55bc9a95ada5705147d740887ce48f521211605e14" # @sha-arm
   url "https://github.com/simion/termic/releases/download/v#{version}/termic_#{version}_aarch64.dmg"
   depends_on arch: :arm64
 
