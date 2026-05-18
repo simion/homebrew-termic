@@ -32,11 +32,13 @@ cask "termic" do
   #      simion/termic - same trust boundary as the source code.
   #   3) Future ed25519-signed updates are verified by the in-app
   #      updater regardless of macOS quarantine state.
-  installer script: {
-    executable: "/usr/bin/xattr",
-    args:       ["-cr", "#{appdir}/termic.app"],
-    sudo:       false,
-  }
+  # MUST be `postflight` (not `installer script:`) - the `installer`
+  # stanza runs BEFORE the `app` artifact is copied to /Applications,
+  # so xattr fails with "no such file." `postflight` runs after every
+  # artifact is in place.
+  postflight do
+    system_command "/usr/bin/xattr", args: ["-cr", "#{appdir}/termic.app"]
+  end
 
   zap trash: [
     "~/Library/Application Support/termic",
