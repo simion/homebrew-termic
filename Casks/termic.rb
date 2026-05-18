@@ -1,5 +1,5 @@
 cask "termic" do
-  version "0.1.1"
+  version "0.2.4"
 
   # Universal macOS binary — single DMG that runs natively on Apple
   # Silicon AND Intel (arm64 + x86_64 fused via lipo at build time).
