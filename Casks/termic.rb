@@ -8,7 +8,7 @@ cask "termic" do
   # sed-targets this line to update the sha256. Don't remove the
   # comment.
   sha256 "ccca67578eb5c2fc9f204c55bc9a95ada5705147d740887ce48f521211605e14" # @sha-arm
-  url "https://github.com/simion/termic/releases/download/v#{version}/termic_#{version}_aarch64.dmg"
+  url "https://github.com/simion/termic/releases/download/v#{version}/Termic_#{version}_aarch64.dmg"
   depends_on arch: :arm64
 
   name "Termic"
@@ -23,7 +23,7 @@ cask "termic" do
   auto_updates true
   depends_on macos: ">= :monterey"
 
-  app "termic.app"
+  app "Termic.app"
 
   # Disabling quarantine lets Termic open on first launch without the
   # "unidentified developer" Gatekeeper prompt. Acceptable because:
@@ -37,7 +37,7 @@ cask "termic" do
   # so xattr fails with "no such file." `postflight` runs after every
   # artifact is in place.
   postflight do
-    system_command "/usr/bin/xattr", args: ["-cr", "#{appdir}/termic.app"]
+    system_command "/usr/bin/xattr", args: ["-cr", "#{appdir}/Termic.app"]
   end
 
   zap trash: [
