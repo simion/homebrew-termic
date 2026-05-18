@@ -1,15 +1,13 @@
 cask "termic" do
   version "0.2.1"
 
-  # Apple Silicon only for now. Intel builds are paused in CI while
-  # GitHub's macos-13 runner queue is unreliable; will return in a
-  # follow-up release with on_arm / on_intel split. The `# @sha-arm`
-  # trailing anchor is load-bearing: release workflow's bump-tap job
-  # sed-targets this line to update the sha256. Don't remove the
-  # comment.
+  # Universal macOS binary — single DMG that runs natively on Apple
+  # Silicon AND Intel (arm64 + x86_64 fused via lipo at build time).
+  # The `# @sha-arm` trailing anchor is load-bearing: release workflow
+  # bump-tap job sed-targets this line. Name kept "sha-arm" for sed
+  # back-compat; the binary itself is universal.
   sha256 "ccca67578eb5c2fc9f204c55bc9a95ada5705147d740887ce48f521211605e14" # @sha-arm
-  url "https://github.com/simion/termic/releases/download/v#{version}/Termic_#{version}_aarch64.dmg"
-  depends_on arch: :arm64
+  url "https://github.com/simion/termic/releases/download/v#{version}/Termic_#{version}_universal.dmg"
 
   name "Termic"
   desc "Free, open-source desktop app for running claude / gemini / codex in parallel git worktrees"
