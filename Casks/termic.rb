@@ -1,17 +1,16 @@
 cask "termic" do
   version "0.12.4"
-
   # Universal macOS binary — single DMG that runs natively on Apple
   # Silicon AND Intel (arm64 + x86_64 fused via lipo at build time).
   # The `# @sha-arm` trailing anchor is load-bearing: release workflow
   # bump-tap job sed-targets this line. Name kept "sha-arm" for sed
   # back-compat; the binary itself is universal.
   sha256 "a84e7575fbef2f62c57d21c219f2af39e18122a78de0b63a4e22e494a1583372" # @sha-arm
-  url "https://github.com/simion/termic/releases/download/v#{version}/Termic_#{version}_universal.dmg"
 
+  url "https://github.com/simion/termic/releases/download/v#{version}/Termic_#{version}_universal.dmg"
   name "Termic"
-  desc "Free, open-source desktop app for running claude / gemini / codex in parallel git worktrees"
-  homepage "https://termic.dev"
+  desc "Run claude, gemini, and codex in parallel git worktrees"
+  homepage "https://termic.dev/"
 
   # Bypass macOS Gatekeeper for unsigned builds. Termic is open source
   # (AGPL-3.0); if you want to verify, build from source. The in-app
@@ -39,8 +38,8 @@ cask "termic" do
   end
 
   zap trash: [
-    "~/Library/Application Support/termic",
     "~/Library/Application Support/com.simion.termic",
+    "~/Library/Application Support/termic",
     "~/Library/Caches/com.simion.termic",
     "~/Library/Preferences/com.simion.termic.plist",
     "~/Library/Saved Application State/com.simion.termic.savedState",
