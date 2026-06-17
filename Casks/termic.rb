@@ -1,12 +1,12 @@
 cask "termic" do
-  version "0.14.1"
+  version "0.14.2"
 
   # Universal macOS binary — single DMG that runs natively on Apple
   # Silicon AND Intel (arm64 + x86_64 fused via lipo at build time).
   # The `# @sha-arm` trailing anchor is load-bearing: release workflow
   # bump-tap job sed-targets this line. Name kept "sha-arm" for sed
   # back-compat; the binary itself is universal.
-  sha256 "333248bd602de66c6e47ffeb17d4d6c4b710f0ab9b953b4895e207ef7203bcb1" # @sha-arm
+  sha256 "f4973c31c144b7cb611dd4769e24957da32bb4ca411877aaf0c2775a3417eae3" # @sha-arm
   url "https://github.com/simion/termic/releases/download/v#{version}/Termic_#{version}_universal.dmg"
 
   name "Termic"
