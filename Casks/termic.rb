@@ -7,7 +7,8 @@ cask "termic" do
   # back-compat; the binary itself is universal.
   sha256 "f255fad6b362ef964197f168380b3e4b5bb5247dbd82c9e60991f153aade2b57" # @sha-arm
 
-  url "https://github.com/simion/termic/releases/download/v#{version}/Termic_#{version}_universal.dmg"
+  url "https://github.com/simion/termic/releases/download/v#{version}/Termic_#{version}_universal.dmg",
+      verified: "github.com/simion/termic/"
   name "Termic"
   desc "Run claude, gemini, and codex in parallel git worktrees"
   homepage "https://termic.dev/"
