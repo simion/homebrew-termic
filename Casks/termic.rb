@@ -19,7 +19,7 @@ cask "termic" do
   # every update package, so post-install updates ARE cryptographically
   # checked even though the initial .dmg isn't notarized by Apple.
   auto_updates true
-  depends_on macos: ">= :monterey"
+  depends_on macos: :monterey
 
   app "Termic.app"
 
