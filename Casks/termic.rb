@@ -13,30 +13,21 @@ cask "termic" do
   desc "Run claude, gemini, and codex in parallel git worktrees"
   homepage "https://termic.dev/"
 
-  # Bypass macOS Gatekeeper for unsigned builds. Termic is open source
-  # (AGPL-3.0); if you want to verify, build from source. The in-app
-  # updater (tauri-plugin-updater) verifies its own ed25519 signature on
-  # every update package, so post-install updates ARE cryptographically
-  # checked even though the initial .dmg isn't notarized by Apple.
+  # Signed with a Developer ID certificate and notarized by Apple as of
+  # 0.22.0, so quarantine is left alone on purpose: Gatekeeper verifies the
+  # signature and the stapled notarization ticket on first launch, and keeps
+  # verifying on every launch after.
+  #
+  # There used to be a `postflight` here running `xattr -cr` on the installed
+  # app. It existed because the .dmg was only ad-hoc signed, and it worked by
+  # stripping the quarantine bit, which is what triggers the Gatekeeper check
+  # in the first place. That bought a clean first launch at the cost of macOS
+  # never validating the app at all. Do not add it back: it would silently
+  # turn off the verification the notarization now pays for.
   auto_updates true
   depends_on macos: :monterey
 
   app "Termic.app"
-
-  # Disabling quarantine lets Termic open on first launch without the
-  # "unidentified developer" Gatekeeper prompt. Acceptable because:
-  #   1) This is our own tap (not homebrew/cask), so we set the policy.
-  #   2) The .dmg is downloaded from a pinned GitHub Releases URL on
-  #      simion/termic - same trust boundary as the source code.
-  #   3) Future ed25519-signed updates are verified by the in-app
-  #      updater regardless of macOS quarantine state.
-  # MUST be `postflight` (not `installer script:`) - the `installer`
-  # stanza runs BEFORE the `app` artifact is copied to /Applications,
-  # so xattr fails with "no such file." `postflight` runs after every
-  # artifact is in place.
-  postflight do
-    system_command "/usr/bin/xattr", args: ["-cr", "#{appdir}/Termic.app"]
-  end
 
   zap trash: [
     "~/Library/Application Support/com.simion.termic",

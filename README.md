@@ -25,7 +25,9 @@ releases](https://github.com/simion/termic/releases) page. The
 cask is auto-bumped by GitHub Actions in `simion/termic` on every
 release; nobody edits this repo by hand.
 
-`quarantine: false` is set so macOS Gatekeeper doesn't flag the
-unsigned `.dmg` on first launch. Termic is open source (AGPL-3.0); if
-you want to verify what you're installing, build from source or audit
-the `.dmg` from the Releases page before installing.
+The `.dmg` is signed with a Developer ID certificate and notarized by
+Apple (since 0.22.0), so it installs and launches with no Gatekeeper
+prompt and nothing to strip. macOS verifies the signature and the
+stapled notarization ticket on every launch. Termic is open source
+(AGPL-3.0); if you want to verify what you're installing, build from
+source or audit the `.dmg` from the Releases page before installing.
