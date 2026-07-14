@@ -13,6 +13,13 @@ cask "termic" do
   desc "Run claude, gemini, and codex in parallel git worktrees"
   homepage "https://termic.dev/"
 
+  # Required for Homebrew's autobump to track new releases. Kept here so this
+  # cask stays byte-comparable with the one submitted to homebrew/cask.
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
   # Signed with a Developer ID certificate and notarized by Apple as of
   # 0.22.0, so quarantine is left alone on purpose: Gatekeeper verifies the
   # signature and the stapled notarization ticket on first launch, and keeps
