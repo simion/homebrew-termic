@@ -5,7 +5,7 @@ cask "termic" do
   # The `# @sha-arm` trailing anchor is load-bearing: release workflow
   # bump-tap job sed-targets this line. Name kept "sha-arm" for sed
   # back-compat; the binary itself is universal.
-  sha256 "804cb34486389312948e7ae748b795479009a080f6e06c8b62b4363c9ac40dc7" # @sha-arm
+  sha256 "0d6c33ac7b457e704d38106d91cb25f7d30836c9eab30c517b2e392d59148f28" # @sha-arm
 
   url "https://github.com/simion/termic/releases/download/v#{version}/Termic_#{version}_universal.dmg",
       verified: "github.com/simion/termic/"
