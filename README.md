@@ -1,6 +1,20 @@
 # Homebrew tap for [Termic](https://termic.dev)
 
-One-liner install:
+> **This tap has moved to [simion/homebrew-tap](https://github.com/simion/homebrew-tap).**
+> It stays here only for backward compatibility. New installs should use:
+>
+> ```sh
+> brew install --cask simion/tap/termic
+> ```
+>
+> To switch an existing install:
+>
+> ```sh
+> brew uninstall --cask termic && brew untap simion/termic
+> brew install --cask simion/tap/termic
+> ```
+
+Legacy install:
 
 ```sh
 brew install --cask simion/termic/termic
